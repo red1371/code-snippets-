@@ -1,0 +1,3 @@
+ALTER ROLE GeneralUser
+ADD MEMBER Will;
+GO
