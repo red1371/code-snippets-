@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps Geocoding App</title>
+    <style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+    form {
+        margin-bottom: 10px;
+    }
+    </style>
+</head>
+<body>
+    <form id="addressForm" onsubmit="submitForm(); return false;">
+        Address: <input type="text" id="address" required /> City:
+        <input type="text" id="city" required /> State:
+        <input type="text" id="state" required /> Zip:
+        <input type="text" id="zip" required />
+        <input type="submit" value="Show on Map" />
+    </form>
+
+    <input
+    type="radio"
+    name="MapType"
+    value="roadmap"
+    onclick="changeMapView('roadmap')"
+    checked
+    />
+    Road
+    <input
+    type="radio"
+    name="MapType"
+    value="satellite"
+    onclick="changeMapView('satellite')"
+    />
+    Satellite
+    <input
+    type="radio"
+    name="MapType"
+    value="Hybrid"
+    onclick="changeMapView('Hybrid')"
+    />
+    Hybrid
+
+    <div id="map"></div>
+
+    <script>
+        let map;
+        let geocoder;
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: { lat: 40.25, lng: -86.55 }
+            });
+            geocoder = new google.maps.Geocoder();
+        }
+
+        function submitForm() {
+            let address = document.getElementById("address").value;
+            let city = document.getElementById("city").value;
+            let state = document.getElementById("state").value;
+            let zip = document.getElementById("zip").value;
+            let fullAddress = `${address}, ${city}, ${state}, ${zip}`;
+
+            geocodeAddress(fullAddress);
+        }
+
+        function geocodeAddress(fullAddress) {
+            geocoder.geocode({ address: fullAddress }, function (results, status) {
+                if (status === "OK") {
+                    map.setCenter(results[0].geometry.location);
+                    new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    alert("Geocode was not successful with the following reason: " + status);
+                }
+            });
+        }
+
+        function changeMapView(viewType) {
+            map.setMapTypeId(google.maps.MapTypeId[viewType.toUpperCase()]);
+        }
+    </script>
+
+    <script async
+    defer 
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Gb_Dtv00W4QWtFoApeKvAH9Wr5z2Qw8&v=3.exp&callback=initMap">
+    </script>
+</body>
+</html>
