@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<title>Contact Us:Joe's Diner and Bar</title>
+<link rel="stylesheet" type= "text/css" href="ContactUs.css">
+<body>
+<header></header>
+<img src="images/joes.jpeg" alt= "Joe's logo" width="150" height="150">
+
+<h1>contact joe's diner </h1>
+
+<ul>
+   <li><a href="menu.html">Menu</a></li>
+  <li><a href="ContactUs.html">Contact Us</a></li>
+  <li><a href="history.html">History</a></li>
+  <li><a href="AboutUs.html">About us</a></li>
+  <li><a href="index.html">Home</a></li>
+  <li><a href="chefsforum.html">chefs forum</a></li>
+  <li><a href="chef.html">chefs page</a></li>
+  
+</ul>
+<main>
+    
+    <form action="" method="post" autocomplete="on" >
+
+<label> First Name: </label>
+<input type= "text" name="fname" required> &#160&#160&#160&#160
+
+<label> Last Name:</label>
+<input type= "text"  name="lname"  required>&#160&#160&#160&#160
+
+<label> Email:</label>
+<input type= "email" autocomplete="off" name="email" required>&#160&#160&#160&#160
+
+<label>Phone:</label>
+<input type= "tel" name="phone" required>&#160&#160&#160&#160
+
+<h2>Enter your four-digit passcode, then click OK:</h2>
+<input id="id1"
+STYLE="color: #000000; 
+              font-family: Verdana; 
+              font-weight: bold;
+              font-size: 12px; 
+              background-color: #CBC3E3;" size="12" maxlength="4"
+type="number" min="1000" max="9999" required>
+
+<button onclick="myfunction()">ok </button>
+
+<p id= "passcode"> </p>
+<script>
+function myFunction() {
+ var inpObj = document.getElementById("id1");
+ if (inpObj.checkValidity() == false) {
+ document.getElementById("passcode").innerHTML =
+inpObj.validationMessage;
+ } else {
+ document.getElementById("passcode").innerHTML = "Passcode Valid";
+ }
+}
+
+</script> 
+<p>reasons for contacting us (select all that apply):</p>
+ <input type="radio" name="food" value="food">food
+ <input type="radio" name="staff" value="staff">staff
+ <input type="radio" name="safety" value="safety">safety
+<br>
+<br>
+      <p>tell us about your visit (check all apply)</p>
+      
+  <input type="checkbox" id="seats" name="seats" value="seats">
+  <label for="seats"> the seats were clean.</label><br>
+ 
+  <input type="checkbox" id="table" name="table" value="table">
+  <label for="table"> the table was clean and set with silverware and accoutrement. </label><br>
+ 
+  <input type="checkbox" id="order" name="order" value="order">
+  <label for="order"> my order was cooked correctly and was what ordered</label><br>
+  
+  <input type="checkbox" id="badorder" name="badorder" value="badorder">
+  <label for="bad order"> my order was cooked incorrectly or was not what i ordered </label><br>
+  
+  <input type="checkbox" id="service" name="service" value="service">
+  <label for="service"> my server and the staff were fantastic 
+      </label><br>
+      
+  <input type="checkbox" id="badservice" name="badservice" value="badservice">
+  <label for="badservice"> I had an issue with my server or someone from the staff</label><br><br>
+  
+
+<h2>whats on your mind</h2>
+<p>Comments:</p>
+ <textarea name= "comments" rows="10" cols="30"></textarea> <br><br>
+ <input type="submit" value="Submit">
+      <input type="reset">
+ </form>
+</main>
+  <footer></footer>
+</body>
+</html>
